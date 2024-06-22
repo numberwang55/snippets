@@ -1,14 +1,14 @@
 import { redirect } from "next/navigation";
 import { db } from "@/db";
-export default function SnippetsCreatePage() {
 
+export default function SnippetsCreatePage() {
   async function createSnippet(formData: FormData) {
     // Needs to be a server action
     "use server";
 
     // checks user's input to make sure it is valid
-    const title = formData.get("title") as string
-    const code = formData.get("code") as string
+    const title = formData.get("title") as string;
+    const code = formData.get("code") as string;
     // create a new record
     const snippet = await db.snippet.create({
       data: {
@@ -17,7 +17,7 @@ export default function SnippetsCreatePage() {
       },
     });
     // redirect user back to route page
-    redirect("/")
+    redirect("/");
   }
 
   return (
@@ -45,7 +45,7 @@ export default function SnippetsCreatePage() {
           />
         </div>
         <button type="submit" className="rounded p-2 bg-blue-200">
-            Create
+          Create
         </button>
       </div>
     </form>
