@@ -43,8 +43,8 @@ async function createSnippet(
       };
     }
   }
-  
-  revalidatePath("/")
+
+  revalidatePath("/");
   // redirect user back to route page
   redirect("/");
 }
@@ -54,6 +54,8 @@ async function editSnippet(id: number, code: string) {
     where: { id },
     data: { code },
   });
+
+  revalidatePath(`/snippets/${id}`);
   redirect(`/snippets/${id}`);
 }
 
@@ -62,7 +64,7 @@ async function deleteSnippet(id: number) {
     where: { id },
   });
 
-  revalidatePath("/")
+  revalidatePath("/");
   redirect("/");
 }
 
